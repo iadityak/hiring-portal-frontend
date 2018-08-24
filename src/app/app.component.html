@@ -1,0 +1,7 @@
+<div class="home">
+  <app-main-nav></app-main-nav> 
+
+  <div id="routeContainer" [@routeAnimation]="getDepth(myOutlet)">
+    <router-outlet #myOutlet="outlet"></router-outlet>
+  </div>
+</div>

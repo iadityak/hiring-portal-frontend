@@ -1,0 +1,42 @@
+<h2 id="h">All Candidates</h2>
+
+<div class="table-responsive">
+  <button class="btn btn-primary" routerLink="/candidate/Add">Add candidate</button>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers">{{header}}</th>
+      </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let candidate of candidates">
+        <td>{{candidate.id}}</td>
+        <td>{{candidate.panCard}}</td>
+        <td>{{candidate.candidateEmailID}}</td>
+        <td>{{candidate.firstName}}</td>
+        <td>{{candidate.lastName}}</td>
+        <td>{{candidate.mobileNumber}}</td>
+        <td>{{candidate.status}}</td>
+        <td>{{candidate.requirementID}}</td>
+        <td>
+          <button (click)="detail(candidate.id)" class="btn btn-info" btn-xs>Details</button>
+        </td>
+
+        
+
+
+        <td>
+          <button [routerLink]="['/candidates/detail', candidate.id]" class="btn btn-info" btn-xs>Edit</button>
+       </td>
+
+        <td>
+          <button (click)="delete(candidate.id)" class="btn btn-danger" btn-xs>X</button> 
+        </td>
+        
+
+        
+        </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,35 @@
+
+    <h2 id='h'>Search Candidates By: </h2>
+    <form (ngSubmit)="onSubmit(rForm.value)">
+      <div [formGroup]="rForm" class="form-group">
+        <label for="pnCard">PanCard</label>
+        <input type="text" class="form-control" id="panCard" required [(ngModel)]="candidate.panCard" name="panCard" formControlName="panCard">
+      </div>
+    
+            <div [formGroup]="rForm" class="form-group">
+              <label for="candidateMailID">Email ID</label>
+              <input type="text" class="form-control" id="candidateMailID" required [(ngModel)]="candidate.candidateMailID" name="candidateMailID" formControlName="candidateMailID">
+            </div>  
+            
+         
+                <div [formGroup]="rForm" class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" class="form-control" id="firstName" required [(ngModel)]="firstName" name="firstName" formControlName="firstName">
+                </div>   
+                <div [formGroup]="rForm" class="form-group">
+                        <label for="lasttName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" required [(ngModel)]="lastName" name="lastName" formControlName="lastName">
+                </div>  
+                
+                <div [formGroup]="rForm" class="form-group">
+                        <label for="status">Status</label>
+                        <input type="text" class="form-control" id="status" required [(ngModel)]="status" name="status" formControlName="status">
+                </div>  
+                  <div class="btn-group" >
+                      <button type="submit" (click)="onSubmit()"  class="btn btn-success">Search</button>
+               </div>      
+     <div class="btn-group" >
+            <button class="btn btn-primary" (click)="goBack()">Back</button>
+          </div>
+    </form>
+

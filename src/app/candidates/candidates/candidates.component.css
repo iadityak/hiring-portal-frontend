@@ -1,0 +1,16 @@
+.table-responsive {
+  font-size: 0.8rem;
+  width: 95vw;
+  background: rgba(202, 199, 199, 0.801);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#h{
+   padding: 20px;
+  margin-top: 50;
+  text-decoration-color: blue;
+  margin: 70;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+
+}

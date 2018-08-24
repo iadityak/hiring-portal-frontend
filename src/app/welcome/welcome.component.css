@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Narrow:600');
+div {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Archivo Narrow', sans-serif;
+  justify-content: center;
+}
+
+.col-md-6{
+  background: rgba(177, 167, 167,  0.6);
+  margin: 10px;
+  border-radius: 10px;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  padding: 10px;
+  font-size-adjust: initial;
+}
+
+#h{
+  padding: 20px;
+  margin-top: 100;
+  text-decoration-color: blue;
+  margin: 100px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+
+}
+
+h{
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
+}
+
+
+.col-md-6:hover{
+  background: rgba(177, 167, 167,  0.7);
+  cursor: pointer;
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@media screen and (max-width: 620px){
+  .container{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+}
