@@ -21,9 +21,9 @@ export class CandidateDetailsComponent implements OnInit {
   constructor(private candidatesService: CandidatesService,
     private route: ActivatedRoute,
     private location: Location,
-  private fb: FormBuilder) {
+    private fb: FormBuilder) {
     this.rForm = new FormGroup({
-      'panCard': new FormControl(''),
+      'candidate_id': new FormControl(''),
       'mailId': new FormControl(''),
       'firstName': new FormControl(''),
       'lastName': new FormControl(''),
@@ -37,7 +37,7 @@ export class CandidateDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params
-    .switchMap((params: Params) => this.candidatesService.getCandidatebyPan(+params['id']))
+    .switchMap((params: Params) => this.candidatesService.getCandidatebyPan('candidate_id'))
     .subscribe(candidate => this.candidate = candidate);
   }
 

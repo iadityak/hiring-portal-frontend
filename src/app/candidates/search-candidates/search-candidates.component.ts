@@ -40,11 +40,12 @@ rForm: FormGroup;
 
 
 
-  private save(): void {
-    this.candidatesService.create(this.candidate).then(() => this.goBack());
+  private search(): void {
+    this.candidatesService. getCandidatebyPan(this.candidate.candidate_id).then(() => this.goBack());
   }
+
   onSubmit() {
-    this.save();
+    this.search();
   }
 
 

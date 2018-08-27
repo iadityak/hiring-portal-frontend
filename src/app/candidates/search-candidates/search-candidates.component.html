@@ -3,7 +3,7 @@
     <form (ngSubmit)="onSubmit(rForm.value)">
       <div [formGroup]="rForm" class="form-group">
         <label for="pnCard">PanCard</label>
-        <input type="text" class="form-control" id="panCard" required [(ngModel)]="candidate.panCard" name="panCard" formControlName="panCard">
+        <input type="text" class="form-control" id="panCard" required [(ngModel)]="candidate.interview.panCard" name="panCard" formControlName="panCard">
       </div>
     
             <div [formGroup]="rForm" class="form-group">

@@ -11,16 +11,14 @@
     </thead>
     <tbody>
         <tr *ngFor="let candidate of candidates">
-        <td>{{candidate.id}}</td>
-        <td>{{candidate.panCard}}</td>
+        <td>{{candidate.candidate_id}}</td>
         <td>{{candidate.candidateEmailID}}</td>
-        <td>{{candidate.firstName}}</td>
-        <td>{{candidate.lastName}}</td>
+        <td>{{candidate.firstName}} {{candidate.lastName}}</td>
         <td>{{candidate.mobileNumber}}</td>
         <td>{{candidate.status}}</td>
         <td>{{candidate.requirementID}}</td>
         <td>
-          <button (click)="detail(candidate.id)" class="btn btn-info" btn-xs>Details</button>
+          <button (click)="detail(candidate.pancard)" class="btn btn-info" btn-xs>Details</button>
         </td>
 
         
@@ -30,9 +28,10 @@
           <button [routerLink]="['/candidates/detail', candidate.id]" class="btn btn-info" btn-xs>Edit</button>
        </td>
 
+<!-- 
         <td>
           <button (click)="delete(candidate.id)" class="btn btn-danger" btn-xs>X</button> 
-        </td>
+        </td> -->
         
 
         

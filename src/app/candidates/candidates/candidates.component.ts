@@ -12,7 +12,7 @@ import { trigger, transition, group, query, style, animate} from '@angular/anima
 
 export class CandidatesComponent implements OnInit {
 
-  headers=['id','panCardNumber', 'mailId', 'firstName', 'lastName','mobileNumber','Status','RequirementID','Details','Edit','Delete'];
+  headers=['PAN Number', 'Email', 'Name', 'Mobile','Status','RequirementID','Details','Edit',];
   candidates: Candidate[];
 
   constructor(private candidatesService: CandidatesService) { }

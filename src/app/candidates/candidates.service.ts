@@ -31,8 +31,8 @@ export class CandidatesService {
     
   }
 
-  getCandidatebyPan(panCard : number): Promise<Candidate>{
-    const url = `http://localhost:8081/candidateDetailbyPan?panCard=${panCard}`;
+  getCandidatebyPan(candidate_id : String): Promise<Candidate>{
+    const url = `http://localhost:8081/candidateDetailbyPan?panCard=${candidate_id}`;
     return this.http.get(url)
     .toPromise()
     .then(response => response.json() as Candidate);
@@ -43,7 +43,7 @@ export class CandidatesService {
   update(candidate: Candidate): Promise<Candidate>{
 
 
-    const url =`${this.candidatesUrl}/${candidate.id}`;
+    const url =`${this.candidatesUrl}/${candidate.candidate_id}`;
     return this.http.put(url, JSON.stringify(candidate), {headers: this.headers})
     .toPromise()
     .then(() => candidate)
@@ -83,5 +83,5 @@ export class CandidatesService {
    .toPromise()
    .then(response => response.json() as String[]);
   }
- 
+
 }

@@ -15,6 +15,7 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { SearchCandidatesComponent } from './candidates/search-candidates/search-candidates.component';
 
 import { WelcomeComponent } from './welcome/welcome.component';
+import { InterviewService } from './interviews/interview.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     BrowserAnimationsModule,
     routes
   ],
-  providers: [CandidatesService, RouterLink, ],
+  providers: [CandidatesService, RouterLink, InterviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

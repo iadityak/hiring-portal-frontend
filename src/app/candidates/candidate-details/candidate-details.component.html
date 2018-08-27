@@ -1,33 +1,34 @@
 <div class="container">
-  <h2>{{doctor.firstName}} {{doctor.lastName}}'s details</h2>
+  <h2 id="h"> {{candidate.firstName}} {{candidate.lastName}}'s details</h2>
   <div>
     <form (ngSubmit)="onSubmit(rForm.value)">
       <div [formGroup]="rForm" class="form-group">
         <label for="panCard">PanCard</label>
-        <input type="text" class="form-control" id="panCard" required [(ngModel)]="doctor.panCard" name="panCard" formControlName="panCard">
-        <small *ngIf="!rForm.controls['panCard'].valid && rForm.controls['panCard'].touched">Name is required</small>
+        <input type="text" class="form-control" id="panCard" required [(ngModel)]="candidate.panCard" name="panCard" formControlName="panCard">
+        <small *ngIf="!rForm.controls['panCard'].valid && rForm.controls['panCard'].touched">Pan Card Number is required</small>
       </div>
       <div [formGroup]="rForm" class="form-group">
-        <label for="Mail">Surname</label>
-        <input type="text" class="form-control" id="surname" required [(ngModel)]="doctor.surname" name="surname" formControlName="surname">
-        <small *ngIf="!rForm.controls['surname'].valid && rForm.controls['surname'].touched">Surname is required</small>
+        <label for="candidateMailID">Email ID</label>
+        <input type="text" class="form-control" id="candidateMailID" required [(ngModel)]="candidate.candidateMailID" name="candidateMailID" formControlName="candidateMailID">
+        <small *ngIf="!rForm.controls['candidateMailID'].valid && rForm.controls['candidateMailID'].touched">Incorrect email format</small>
       </div>
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" [(ngModel)]="doctor.title" name="title">
+      <div  [formGroup]="rForm" class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName"  required [(ngModel)]="candidate.firstName" name="firstName" formControlName="firstName" >
+        <small *ngIf="!rForm.controls['firstName'].valid && rForm.controls['firstName'].touched">First Name is required</small>
+      </div>
+      <div [formGroup]="rForm" class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" required [(ngModel)]="candidate.lastName" name="lastName" formControlName="lastName">
+          <small *ngIf="!rForm.controls['lastName'].valid && rForm.controls['lastName'].touched">Last Name is required</small>
       </div>
 
-           <div [formGroup]="rForm" class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="text" onkeypress='return event.charCode >=48 && event.charCode <= 57 || event.charCode == 45' class="form-control"
-          id="phone" required [(ngModel)]="doctor.phone" name="phone" formControlName="phone">
-        <small *ngIf="!rForm.controls['phone'].valid && rForm.controls['phone'].touched">Phone Number is required</small>
+      <div [formGroup]="rForm" class="form-group">
+        <label for="mobileNumber">Mobile Number</label>
+        <input type="text" class="form-control" id="mobileNumber" required [(ngModel)]="candidate.mobileNumber" name="mobileNumber" formControlName="mobileNumber">
+        <small *ngIf="!rForm.controls['mobileNumber'].valid && rForm.controls['mobileNumber'].touched">10 digit Mobile Number is required</small>
       </div>
-      <div class="form-group" [formGroup]="rForm">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" required [(ngModel)]="doctor.email" name="email" formControlName="email">
-        <small *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">Incorrect email format</small>
-      </div>
+      
 
       <div class="btn-group">
         <button class="btn btn-primary" (click)="goBack()">Back</button>

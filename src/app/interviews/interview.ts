@@ -1,7 +1,8 @@
-export class interviewID {
+export class Interview {
+
     public interviewID: String;
 
-    public panCard : String;
+    public pancard : String;
     
 	public onlineTestScore : String;
 	
