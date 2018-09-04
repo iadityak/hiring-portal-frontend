@@ -6,42 +6,44 @@
 			<p>{{postResultMessage}}</p>
     </div>
     
-    <form (ngSubmit)="onSubmit(rForm.value)">
+    <form (ngSubmit)="onSubmit(rForm.value,$event)">
 
      <div  [formGroup]="rForm" class="form-group">
-        <label for="firstName">First Name</label>
+        <label for="firstName">First Name <font color="red">*</font></label>
         <input type="text" class="form-control" id="firstName"  required [(ngModel)]="candidate.firstName" name="firstName" formControlName="firstName" >
         <small *ngIf="!rForm.controls['firstName'].valid && rForm.controls['firstName'].touched">First Name is required</small>
       </div>
 
       <div [formGroup]="rForm" class="form-group">
-          <label for="lastName">Last Name</label>
+          <label for="lastName">Last Name <font color="red">*</font></label>
           <input type="text" class="form-control" id="lastName" required [(ngModel)]="candidate.lastName" name="lastName" formControlName="lastName">
             <small *ngIf="!rForm.controls['lastName'].valid && rForm.controls['lastName'].touched">Last Name is required</small>
       </div>
 
 
       <div [formGroup]="rForm" class="form-group">
-        <label for="candidate_id">PanCard</label>
+        <label for="candidate_id">PanCard <font color="red">*</font></label>
         <input type="text" class="form-control" id="candidate_id" required [(ngModel)]="candidate.candidate_id" name="candidate_id" formControlName="candidate_id">
         <small *ngIf="!rForm.controls['candidate_id'].valid && rForm.controls['candidate_id'].touched">Pan Card Number is required</small>
       </div>
+
       <div [formGroup]="rForm" class="form-group">
-        <label for="candidateEmailID">Email ID</label>
+        <label for="candidateEmailID">Email ID <font color="red">*</font></label>
         <input type="text" class="form-control" id="candidateEmailID" required [(ngModel)]="candidate.candidateEmailID" name="candidateEmailID" formControlName="candidateEmailID">
         <small *ngIf="!rForm.controls['candidateEmailID'].valid && rForm.controls['candidateEmailID'].touched">Incorrect email format</small>
       </div>
+      <div></div> 
      
       
 
       <div [formGroup]="rForm" class="form-group">
-        <label for="mobileNumber">Mobile Number</label>
+        <label for="mobileNumber">Mobile Number <font color="red">*</font></label>
         <input type="text" class="form-control" id="mobileNumber" required [(ngModel)]="candidate.mobileNumber" name="mobileNumber" formControlName="mobileNumber">
         <small *ngIf="!rForm.controls['mobileNumber'].valid && rForm.controls['mobileNumber'].touched">10 digit Mobile Number is required</small>
       </div>
       
       <div [formGroup]="rForm" class="form-group">
-          <label for="status">Status</label>
+          <label for="status">Status <font color="red">*</font></label>
           <select id="status" class="form-control" required [(ngModel)]="candidate.status" name="status" formControlName="status">
             <option value="Selected">Selected</option>
             <option value="Profile Created"> Profile Created</option>
@@ -51,7 +53,7 @@
       </div>
             
      <div [formGroup]="rForm" class="form-group">
-        <label for="requirementID">Position Applied</label>   
+        <label for="requirementID">Position Applied <font color="red">*</font></label>   
         <select id="requirementID" class="form-control" required [(ngModel)]="candidate.requirementID" name="requirementID" formControlName="requirementID">
         <option value="123">Senior Software Engineer</option>
         <option value="234">Software Engineer</option>
@@ -59,10 +61,9 @@
         </select>
       </div>
 
-      
       <div class="btn-group" >
           <button class="btn btn-primary" (click)="goBack()">Back</button>
-          <button type="submit" (click)="onSubmit()"  class="btn btn-success" [disabled]="!rForm.valid" >Submit</button>
+          <button type="submit" (click)="onSubmit($event)"  class="btn btn-success" [disabled]="!rForm.valid" >Submit</button>
         </div>
       </form>
 

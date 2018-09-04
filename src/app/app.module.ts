@@ -18,6 +18,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { InterviewService } from './interviews/interview.service';
 
 import { CandidateModalComponent } from './candidates/candidate-modal/candidate-modal.component';
+import {HttpClient} from '@angular/common/http'
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { CandidateModalComponent } from './candidates/candidate-modal/candidate-
     WelcomeComponent,
     CandidateModalComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,9 @@ import { CandidateModalComponent } from './candidates/candidate-modal/candidate-
     RouterModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    routes
+    routes,
+    BrowserModule,
+    
   ],
   providers: [CandidatesService, RouterLink, InterviewService],
   bootstrap: [AppComponent]

@@ -16,12 +16,14 @@ export class AddCandidateComponent implements OnInit {
 
 candidate=new Candidate;
 candidates: Candidate[];
+message: String[];
+statuscode : Number;
+show : Boolean = false;
 rForm: FormGroup;
   constructor(private candidatesService: CandidatesService,
               private location: Location,
               private fb: FormBuilder) {
                 this.rForm = this.fb.group({
-                  
                   candidate_id   : ['',[Validators.required]],
                   firstName       : ['',[Validators.required]],
                   lastName         : ['',[Validators.required]],
@@ -29,22 +31,32 @@ rForm: FormGroup;
                   candidateEmailID         : ['',[Validators.required, Validators.email]],
                   status : [''],
                   requirementID: [''],
-                  
-                  
                   });
                  }
 
   ngOnInit() {
-            return this.candidatesService.getCandidates().then(candidates => this.candidates = candidates);
+    
+           // return this.candidatesService.getCandidates().then(candidates => this.candidates = candidates);
   }
 
 
 
   private save(): void {
-     this.candidatesService.create(this.candidate).then(() => this.goBack());
+     this.candidatesService.create(this.candidate).then(response => this.statuscode= response).then(() =>this.toggle()).then(() => this.goBack());
   }
 
-  onSubmit() {
+  toggle(){
+    console.log(this.statuscode);
+    if(this.statuscode==200)
+    {
+      this.show=true;
+      alert(this.candidate.firstName + ' added successfully!');
+    }
+    this.rForm.reset();
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
     this.save();
   }
 

@@ -9,20 +9,17 @@ export class Candidate {
   public status: String;
   public requirementID: String;
   public interview: Interview;
-
 }
 
 export class Interview {
 
-  public interviewID: String;
-
-  public pancard : String;
+  public candidate_id: String;
   
-public onlineTestScore : String;
+  public onlineTestScore : String;
 
   public firstLevelName: String;
   
-public firstLevelFeedback: String ;
+  public firstLevelFeedback: String ;
 
   public secondLevelName: String ;
   
@@ -32,7 +29,7 @@ public firstLevelFeedback: String ;
   
   public thirdLevelFeedback: String ;
 
-  public status: String;
+  public status: String = 'NA';
   
   public dateOfOffer: String ;
 

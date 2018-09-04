@@ -3,6 +3,7 @@ import { Candidate } from './candidate';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Headers } from '@angular/http';
+import {HttpClient} from '@angular/common/http'
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { Response } from '@angular/http/src/static_response';
@@ -12,6 +13,7 @@ import { Observable } from 'rxjs/Observable';
 import { ErrorResponse } from '../shared/ErrorResponse';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+//import {TransferHttpCacheModule} from '@nguniversal/common'
 
 @Injectable()
 export class CandidatesService {
@@ -38,6 +40,14 @@ export class CandidatesService {
     .then(response => response.json() as Array<Candidate>)
     .catch(this.handleError);
     
+  }
+
+  candidateSearch(candidate_id : String, email : String, status: String): Promise<Array<Candidate>>{
+    const url = `http://localhost:8081/candidateSearch?panCard=${candidate_id}&emailID=${email}&status=${status}&start&end`;
+    return this.http.get(url)
+    .toPromise()
+    .then(response => response.json() as Array<Candidate>)
+    .catch(this.handleError);
   }
 
   // getCandidatebyPan(candidate_id : String) {
@@ -67,11 +77,11 @@ export class CandidatesService {
 
 
 
-  create(candidate: Candidate): Promise<Candidate> {
+  create(candidate: Candidate): Promise<Number> {
     return this.http
     .post('http://localhost:8081/addDetails', JSON.stringify(candidate), {headers: this.headers})
     .toPromise()
-    .then(() => candidate)
+    .then(response => response.status as Number)
     .catch(this.handleError);
   }
 
@@ -83,7 +93,6 @@ export class CandidatesService {
  reqIDs: String[] = [''];
 
  getRequirementID(): Promise<String[]>  {
-    var arr =[];
     return this.http.get('http://localhost:8081/requirementID')
    .toPromise()
    .then(response => response.json() as String[]);

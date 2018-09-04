@@ -18,7 +18,9 @@ export class SearchCandidateComponent implements OnInit {
   candidateList: Array<Candidate>;
   searchForm: FormGroup;
   headers=['PAN Number', 'Email', 'Name', 'Mobile','Status','RequirementID','Details','Edit'];
-  username: string;
+  username: string= '';
+  email: string = '';
+  status: string='';
   show: boolean = false;
   error: boolean=false;
 
@@ -57,7 +59,7 @@ export class SearchCandidateComponent implements OnInit {
   private search():void {
     console.log("Calling API --");
     this.error=false;
-    this.candidatesService.getCandidatebyPan(this.username).then
+    this.candidatesService.candidateSearch(this.username,this.email,this.status).then
      (
 
       response => this.candidateList = response
@@ -75,14 +77,18 @@ export class SearchCandidateComponent implements OnInit {
      this.error=true;
     }
   }
-  
-  onSubmit() {
+
+  onSubmit(event) {
+    event.preventDefault();
+    console.log("API...", event);
     this.search();
   }
 
 
+
+
  goBack(): void {
-    this.location.isCurrentPathEqualTo;
+    this.location.back;
   }
 
 }
