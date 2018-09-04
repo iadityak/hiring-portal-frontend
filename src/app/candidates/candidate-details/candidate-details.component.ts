@@ -18,6 +18,8 @@ export class CandidateDetailsComponent implements OnInit {
   rForm: FormGroup;
   candidate = new Candidate();
   submitted = false;
+  statuscode: Number;
+  show: boolean;
   constructor(private candidatesService: CandidatesService,
     private route: ActivatedRoute,
     private location: Location,
@@ -54,8 +56,22 @@ export class CandidateDetailsComponent implements OnInit {
 
   onSubmit(): void {
      this.submitted = true;
-    this.candidatesService.update(this.candidate).then(() => this.goBack());
+    this.candidatesService.update(this.candidate).then(response => this.statuscode= response).then(() =>this.toggle()).then(() => this.goBack());
 
+  }
+
+  toggle(){
+    console.log(this.statuscode);
+    if(this.statuscode==200)
+    {
+      this.show=true;
+      alert(this.candidate.firstName + ' updated successfully!');
+    }
+    else
+    {
+      this.show=false;
+      alert("Failed to update candidate. Please Try Again!");
+    }
   }
 
 

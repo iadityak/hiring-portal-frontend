@@ -52,6 +52,11 @@ rForm: FormGroup;
       this.show=true;
       alert(this.candidate.firstName + ' added successfully!');
     }
+    else
+    {
+      this.show=false;
+      alert("Failed to add candidate. Please Try Again!");
+    }
     this.rForm.reset();
   }
 

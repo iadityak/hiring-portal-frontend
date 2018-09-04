@@ -55,13 +55,13 @@ export class CandidatesService {
   //   return this.http.get(url);
   // }
 
-  update(candidate: Candidate): Promise<Candidate>{
+  update(candidate: Candidate): Promise<Number>{
 
 
     const url =`http://localhost:8081/editDetails`;
     return this.http.post(url, JSON.stringify(candidate), {headers: this.headers})
     .toPromise()
-    .then(() => candidate)
+    .then(response => response.status as Number)
     .catch(this.handleError);
 
   }
