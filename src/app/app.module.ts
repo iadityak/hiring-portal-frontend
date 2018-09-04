@@ -12,10 +12,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCandidateComponent } from './candidates/add-candidate/add-candidate.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainNavComponent } from './main-nav/main-nav.component';
-import { SearchCandidatesComponent } from './candidates/search-candidates/search-candidates.component';
+import { SearchCandidateComponent } from './candidates/search-candidates/search-candidate.component';
 
 import { WelcomeComponent } from './welcome/welcome.component';
 import { InterviewService } from './interviews/interview.service';
+
+import { CandidateModalComponent } from './candidates/candidate-modal/candidate-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,9 @@ import { InterviewService } from './interviews/interview.service';
     CandidateDetailsComponent,
     AddCandidateComponent,
     MainNavComponent,
-    SearchCandidatesComponent,
-    WelcomeComponent
+    SearchCandidateComponent,
+    WelcomeComponent,
+    CandidateModalComponent,
 
   ],
   imports: [

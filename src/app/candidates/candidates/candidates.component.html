@@ -10,7 +10,9 @@
 
     </thead>
     <tbody>
-        <tr *ngFor="let candidate of candidates">
+      
+         <tr *ngFor="let candidate of candidates"> 
+         
         <td>{{candidate.candidate_id}}</td>
         <td>{{candidate.candidateEmailID}}</td>
         <td>{{candidate.firstName}} {{candidate.lastName}}</td>
@@ -18,14 +20,14 @@
         <td>{{candidate.status}}</td>
         <td>{{candidate.requirementID}}</td>
         <td>
-          <button (click)="detail(candidate.pancard)" class="btn btn-info" btn-xs>Details</button>
+          <button [routerLink]="['/candidates/view', candidate.candidate_id]" class="btn btn-info" btn-xs>Details</button>
         </td>
 
         
 
 
         <td>
-          <button [routerLink]="['/candidates/detail', candidate.id]" class="btn btn-info" btn-xs>Edit</button>
+          <button [routerLink]="['/candidates/detail', candidate.candidate_id]" class="btn btn-info" btn-xs>Edit</button>
        </td>
 
 <!-- 

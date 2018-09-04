@@ -24,28 +24,36 @@ export class CandidateDetailsComponent implements OnInit {
     private fb: FormBuilder) {
     this.rForm = new FormGroup({
       'candidate_id': new FormControl(''),
-      'mailId': new FormControl(''),
+      'candidateEmailID': new FormControl(''),
       'firstName': new FormControl(''),
       'lastName': new FormControl(''),
       'mobileNumber': new FormControl(''),
       'status': new FormControl(''),
       'requirementID' : new FormControl(''),
+      'onlineTestScore' : new FormControl(''),
+      'firstLevelName' : new FormControl(''),
+      'firstLevelFeedback' : new FormControl(''),
+      'dateOfOffer' : new FormControl(''),
+
+      
 
    })
+
+   //this.candidateList = new Array<Candidate>();
 
      }
 
   ngOnInit() {
     this.route.params
-    .switchMap((params: Params) => this.candidatesService.getCandidatebyPan('candidate_id'))
-    .subscribe(candidate => this.candidate = candidate);
+    .switchMap((params: Params) => this.candidatesService.getCandidatebyPan(params['candidate_id']))
+    .subscribe(response => this.candidate = response[0]);
   }
 
 
 
 
   onSubmit(): void {
-    this.submitted = true;
+     this.submitted = true;
     this.candidatesService.update(this.candidate).then(() => this.goBack());
 
   }

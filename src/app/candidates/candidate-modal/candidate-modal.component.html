@@ -1,0 +1,67 @@
+<div class="container">
+  <h2 id="h"> {{candidate.firstName}} {{candidate.lastName}}'s details</h2>
+  
+  <div>
+  <table style="width:100%" class="table table-hover">
+      <tr>
+        <td>Name</td>
+        <td>{{candidate.firstName}} {{candidate.lastName}}</td> 
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>{{candidate.candidateEmailID}}</td> 
+      </tr>
+      <tr>
+         <td>Mobile Number </td>
+         <td>{{candidate.mobileNumber}}</td> 
+      </tr>
+      <tr>
+          <td>Pan Card</td>
+          <td>{{candidate.candidate_id}}</td> 
+        </tr>
+        <tr>
+          <td>Current Status</td>
+          <td>{{candidate.status}}</td> 
+        </tr>
+        <tr>
+           <td>Online Test Score </td>
+           <td>{{candidate.interview.onlineTestScore}}</td> 
+        </tr>
+        <tr>
+            <td>First Level : </td>
+            <td>{{candidate.interview.firstLevelFeedback}}</td> 
+         </tr>
+         <tr>
+            <td>Second Level : </td>
+            <td>{{candidate.interview.secondLevelFeedback}}</td> 
+         </tr>
+         <tr>
+            <td>Third Level : </td>
+            <td>{{candidate.interview.thirdLevelFeedback}}</td> 
+         </tr>
+         <tr>
+            <td>Date of Offer : </td>
+            <td>{{candidate.interview.dateOfOffer}}</td> 
+         </tr>
+         <tr>
+            <td>Joining Date : </td>
+            <td>{{candidate.interview.joiningDate}}</td> 
+         </tr>
+         <tr>
+            <td>Revised Joining Date: </td>
+            <td>{{candidate.interview.revisedJoiningDate}}</td> 
+         </tr>
+
+
+
+
+    </table>
+
+
+  </div>
+
+  <div class="btn-group" >
+    <button class="btn btn-primary" (click)="goBack()">Back</button>
+  </div>
+
+</div>

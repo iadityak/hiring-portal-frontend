@@ -19,7 +19,7 @@ export class CandidatesService {
 
   constructor(private http: Http, private router: Router, private location: Location) { }
 
-  private candidatesUrl = 'http://localhost:8081/addCandidate';
+  private candidatesUrl = 'http://localhost:8081/addDetails';
   private headers = new Headers({'Content-Type': 'application/json'});
   private options = new RequestOptions();
   candidateUp = new Candidate();
@@ -31,20 +31,25 @@ export class CandidatesService {
     
   }
 
-  getCandidatebyPan(candidate_id : String): Promise<Candidate>{
-    const url = `http://localhost:8081/candidateDetailbyPan?panCard=${candidate_id}`;
+  getCandidatebyPan(candidate_id : String): Promise<Array<Candidate>>{
+     const url = `http://localhost:8081/candidateDetailbyPan?panCard=${candidate_id}`;
     return this.http.get(url)
     .toPromise()
-    .then(response => response.json() as Candidate);
+    .then(response => response.json() as Array<Candidate>)
+    .catch(this.handleError);
+    
   }
 
-
+  // getCandidatebyPan(candidate_id : String) {
+  //   const url = `http://localhost:8081/candidateDetailbyPan?panCard=${candidate_id}`;
+  //   return this.http.get(url);
+  // }
 
   update(candidate: Candidate): Promise<Candidate>{
 
 
-    const url =`${this.candidatesUrl}/${candidate.candidate_id}`;
-    return this.http.put(url, JSON.stringify(candidate), {headers: this.headers})
+    const url =`http://localhost:8081/editDetails`;
+    return this.http.post(url, JSON.stringify(candidate), {headers: this.headers})
     .toPromise()
     .then(() => candidate)
     .catch(this.handleError);
@@ -64,7 +69,7 @@ export class CandidatesService {
 
   create(candidate: Candidate): Promise<Candidate> {
     return this.http
-    .post('http://localhost:8081/addCandidate', JSON.stringify(candidate), {headers: this.headers})
+    .post('http://localhost:8081/addDetails', JSON.stringify(candidate), {headers: this.headers})
     .toPromise()
     .then(() => candidate)
     .catch(this.handleError);

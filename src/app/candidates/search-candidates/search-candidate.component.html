@@ -1,0 +1,65 @@
+
+    <h2 id='h'>Search Candidates By: </h2>
+    <form (ngSubmit)="onSubmit(searchForm.value)">
+       
+      <div class="form-group">
+          <label for="username">Pan Card Number</label>
+          <input type="text" class="form-control" [(ngModel)]="username" name="username">
+      </div>
+      <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" [(ngModel)]="email" name="email">
+        </div>
+        <div class="form-group">
+                <label for="status">Status</label>
+                <input type="text" class="form-control" [(ngModel)]="status" name="status">
+            </div>
+            
+      <div>
+          <h2></h2>
+      </div>
+      
+     
+       <div class="btn-group" >
+       <button type="submit" (click)="onSubmit()"  class="btn btn-success">Search</button>
+       </div>      
+     <div class="btn-group" >
+            <button class="btn btn-primary" (click)="goBack()">Back</button>
+          </div>
+    </form>
+
+    <div *ngIf=error>
+        <h4>No Result Found</h4>
+    </div>
+  
+    <div *ngIf=show class="table-responsive">
+      <table class="table table-hover">
+          <thead>
+              <tr>
+                <th *ngFor="let header of headers">{{header}}</th>
+              </tr>
+         </thead>
+         <tbody>
+            <tr *ngFor="let candidate of candidateList">
+                <td>{{candidate.candidate_id}}</td>
+                <td>{{candidate.candidateEmailID}}</td>
+                <td>{{candidate.firstName}} {{candidate.lastName}}</td>
+                <td>{{candidate.mobileNumber}}</td>
+                <td>{{candidate.status}}</td>
+                <td>{{candidate.requirementID}}</td>
+
+                <td>
+                    <button [routerLink]="['/candidates/view', candidate.candidate_id]" class="btn btn-info" btn-xs>Details</button>
+                </td>
+          
+                  
+          
+          
+                  <td>
+                    <button [routerLink]="['/candidates/detail', candidate.candidate_id]" class="btn btn-info" btn-xs>Edit</button>
+                 </td>
+         </tbody>
+        </table>
+    </div>
+   
+  

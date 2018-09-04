@@ -13,7 +13,7 @@
         <input type="text" class="form-control" id="firstName"  required [(ngModel)]="candidate.firstName" name="firstName" formControlName="firstName" >
         <small *ngIf="!rForm.controls['firstName'].valid && rForm.controls['firstName'].touched">First Name is required</small>
       </div>
-      
+
       <div [formGroup]="rForm" class="form-group">
           <label for="lastName">Last Name</label>
           <input type="text" class="form-control" id="lastName" required [(ngModel)]="candidate.lastName" name="lastName" formControlName="lastName">
@@ -22,14 +22,14 @@
 
 
       <div [formGroup]="rForm" class="form-group">
-        <label for="panCard">PanCard</label>
-        <input type="text" class="form-control" id="panCard" required [(ngModel)]="candidate.panCard" name="panCard" formControlName="panCard">
-        <small *ngIf="!rForm.controls['panCard'].valid && rForm.controls['panCard'].touched">Pan Card Number is required</small>
+        <label for="candidate_id">PanCard</label>
+        <input type="text" class="form-control" id="candidate_id" required [(ngModel)]="candidate.candidate_id" name="candidate_id" formControlName="candidate_id">
+        <small *ngIf="!rForm.controls['candidate_id'].valid && rForm.controls['candidate_id'].touched">Pan Card Number is required</small>
       </div>
       <div [formGroup]="rForm" class="form-group">
-        <label for="candidateMailID">Email ID</label>
-        <input type="text" class="form-control" id="candidateMailID" required [(ngModel)]="candidate.candidateMailID" name="candidateMailID" formControlName="candidateMailID">
-        <small *ngIf="!rForm.controls['candidateMailID'].valid && rForm.controls['candidateMailID'].touched">Incorrect email format</small>
+        <label for="candidateEmailID">Email ID</label>
+        <input type="text" class="form-control" id="candidateEmailID" required [(ngModel)]="candidate.candidateEmailID" name="candidateEmailID" formControlName="candidateEmailID">
+        <small *ngIf="!rForm.controls['candidateEmailID'].valid && rForm.controls['candidateEmailID'].touched">Incorrect email format</small>
       </div>
      
       
@@ -40,23 +40,24 @@
         <small *ngIf="!rForm.controls['mobileNumber'].valid && rForm.controls['mobileNumber'].touched">10 digit Mobile Number is required</small>
       </div>
       
+      <div [formGroup]="rForm" class="form-group">
+          <label for="status">Status</label>
+          <select id="status" class="form-control" required [(ngModel)]="candidate.status" name="status" formControlName="status">
+            <option value="Selected">Selected</option>
+            <option value="Profile Created"> Profile Created</option>
+            <option value="Interview Process">Interview Process</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+      </div>
             
-            <div class="custom-select" style="width:200px;">
-  <select>
-    <option value="0">Select Requirement ID:</option>
-    <option value="1">123</option>
-    <option value="2">234</option>
-    <option value="3">567</option>
-  </select>
-  
-
-  <!-- <select>
-    <option *ngFor = "let reqID of String" value={{combo}}>{{combo}}
-    </option>
-  </select> -->
-
-
-</div>
+     <div [formGroup]="rForm" class="form-group">
+        <label for="requirementID">Position Applied</label>   
+        <select id="requirementID" class="form-control" required [(ngModel)]="candidate.requirementID" name="requirementID" formControlName="requirementID">
+        <option value="123">Senior Software Engineer</option>
+        <option value="234">Software Engineer</option>
+        <option value="567">Associate Software Engineer</option>
+        </select>
+      </div>
 
       
       <div class="btn-group" >

@@ -21,17 +21,17 @@ rForm: FormGroup;
               private location: Location,
               private fb: FormBuilder) {
                 this.rForm = this.fb.group({
-                  id:[''],
-                  panCard   : ['',[Validators.required]],
+                  
+                  candidate_id   : ['',[Validators.required]],
                   firstName       : ['',[Validators.required]],
                   lastName         : ['',[Validators.required]],
                   mobileNumber    : ['',Validators.compose([Validators.required, Validators.minLength(10),Validators.maxLength(10)])],
-                  candidateMailID         : ['',[Validators.required, Validators.email]],
+                  candidateEmailID         : ['',[Validators.required, Validators.email]],
                   status : [''],
                   requirementID: [''],
                   
+                  
                   });
-
                  }
 
   ngOnInit() {
@@ -41,19 +41,15 @@ rForm: FormGroup;
 
 
   private save(): void {
-    this.candidatesService.create(this.candidate).then(() => this.current());
+     this.candidatesService.create(this.candidate).then(() => this.goBack());
   }
+
   onSubmit() {
     this.save();
   }
 
-current():void{
-  this.location.back();
-}
-
-
  goBack(): void {
-    this.location.back();
+    this.location.isCurrentPathEqualTo;
   }
 
 

@@ -15,6 +15,7 @@ export class CandidatesComponent implements OnInit {
   headers=['PAN Number', 'Email', 'Name', 'Mobile','Status','RequirementID','Details','Edit',];
   candidates: Candidate[];
 
+
   constructor(private candidatesService: CandidatesService) { }
 
   ngOnInit() {
