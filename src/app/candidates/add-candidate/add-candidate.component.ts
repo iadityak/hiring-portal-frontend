@@ -16,7 +16,7 @@ export class AddCandidateComponent implements OnInit {
 
 candidate=new Candidate;
 candidates: Candidate[];
-message: String[];
+requirement: String[];
 statuscode : Number;
 show : Boolean = false;
 rForm: FormGroup;
@@ -36,7 +36,7 @@ rForm: FormGroup;
 
   ngOnInit() {
     
-           // return this.candidatesService.getCandidates().then(candidates => this.candidates = candidates);
+           return this.candidatesService.getRequirementID().then(response => this.requirement = response);
   }
 
 

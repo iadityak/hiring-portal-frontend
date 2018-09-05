@@ -19,6 +19,7 @@ export class CandidateDetailsComponent implements OnInit {
   candidate = new Candidate();
   submitted = false;
   statuscode: Number;
+  requirement : String[];
   show: boolean;
   constructor(private candidatesService: CandidatesService,
     private route: ActivatedRoute,
@@ -35,6 +36,10 @@ export class CandidateDetailsComponent implements OnInit {
       'onlineTestScore' : new FormControl(''),
       'firstLevelName' : new FormControl(''),
       'firstLevelFeedback' : new FormControl(''),
+      'secondLevelName' : new FormControl(''),
+      'secondLevelFeedback' : new FormControl(''),
+      'thirdLevelName' : new FormControl(''),
+      'thirdLevelFeedback' : new FormControl(''),
       'dateOfOffer' : new FormControl(''),
 
       
@@ -49,6 +54,7 @@ export class CandidateDetailsComponent implements OnInit {
     this.route.params
     .switchMap((params: Params) => this.candidatesService.getCandidatebyPan(params['candidate_id']))
     .subscribe(response => this.candidate = response[0]);
+    this.candidatesService.getRequirementID().then(response => this.requirement = response);
   }
 
 

@@ -42,8 +42,8 @@ export class CandidatesService {
     
   }
 
-  candidateSearch(candidate_id : String, email : String, status: String): Promise<Array<Candidate>>{
-    const url = `http://localhost:8081/candidateSearch?panCard=${candidate_id}&emailID=${email}&status=${status}&start&end`;
+  candidateSearch(candidate_id : String, email : String, status: String, start: String,end:String): Promise<Array<Candidate>>{
+    const url = `http://localhost:8081/candidateSearch?panCard=${candidate_id}&emailID=${email}&status=${status}&start=${start}&end=${end}`;
     return this.http.get(url)
     .toPromise()
     .then(response => response.json() as Array<Candidate>)

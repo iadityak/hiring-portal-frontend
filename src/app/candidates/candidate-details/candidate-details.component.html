@@ -4,22 +4,22 @@
     <form (ngSubmit)="onSubmit(rForm.value)">
       <div [formGroup]="rForm" class="form-group">
         <label for="candidate_id">PanCard</label>
-        <input type="text" class="form-control" id="candidate_id" required [(ngModel)]="candidate.candidate_id" name="candidate_id" formControlName="candidate_id">
+        <input type="text" class="form-control" id="candidate_id" required [(ngModel)]="candidate.candidate_id" name="candidate_id" formControlName="candidate_id" disabled>
         <small *ngIf="!rForm.controls['candidate_id'].valid && rForm.controls['candidate_id'].touched">Pan Card Number is required</small>
       </div>
       <div [formGroup]="rForm" class="form-group">
         <label for="candidateEmailID">Email ID</label>
-        <input type="text" class="form-control" id="candidateEmailID" required [(ngModel)]="candidate.candidateEmailID" name="candidateEmailID" formControlName="candidateEmailID">
+        <input type="text" class="form-control" id="candidateEmailID" required [(ngModel)]="candidate.candidateEmailID" name="candidateEmailID" formControlName="candidateEmailID" disabled>
         <small *ngIf="!rForm.controls['candidateEmailID'].valid && rForm.controls['candidateEmailID'].touched">Incorrect email format</small>
       </div>
       <div  [formGroup]="rForm" class="form-group">
         <label for="firstName">First Name</label>
-        <input type="text" class="form-control" id="firstName"  required [(ngModel)]="candidate.firstName" name="firstName" formControlName="firstName" >
+        <input type="text" class="form-control" id="firstName"  required [(ngModel)]="candidate.firstName" name="firstName" formControlName="firstName" disabled >
         <small *ngIf="!rForm.controls['firstName'].valid && rForm.controls['firstName'].touched">First Name is required</small>
       </div>
       <div [formGroup]="rForm" class="form-group">
         <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" id="lastName" required [(ngModel)]="candidate.lastName" name="lastName" formControlName="lastName">
+        <input type="text" class="form-control" id="lastName" required [(ngModel)]="candidate.lastName" name="lastName" formControlName="lastName" disabled>
           <small *ngIf="!rForm.controls['lastName'].valid && rForm.controls['lastName'].touched">Last Name is required</small>
       </div>
 
@@ -30,18 +30,21 @@
       </div>
 
       <div [formGroup]="rForm" class="form-group">
-        <label for="status">Status</label>
-        <input type="text" class="form-control" id="status" required [(ngModel)]="candidate.status" name="status" formControlName="status">
+          <label for="status">Status </label>
+          <select id="status" class="form-control" required [(ngModel)]="candidate.status" name="status" formControlName="status">
+            <option value="Selected">Selected</option>
+            <option value="Profile Created"> Profile Created</option>
+            <option value="Interview Process">Interview Process</option>
+            <option value="Rejected">Rejected</option>
+          </select>
       </div>
           
-   <div [formGroup]="rForm" class="form-group">
-      <label for="requirementID">Requiremnet ID</label>   
-      <select id="requirementID" required [(ngModel)]="candidate.requirementID" name="requirementID" formControlName="requirementID">
-      <option value="123">Senior Software Engineer</option>
-      <option value="234">Software Engineer</option>
-      <option value="567">Associate Software Engineer</option>
-      </select>
-    </div>
+      <div [formGroup]="rForm" class="form-group">
+          <label for="requirementID">Requirement ID </label>   
+          <select id="requirementID" class="form-control" required [(ngModel)]="candidate.requirementID" name="requirementID" formControlName="requirementID">
+          <option *ngFor="let x of requirement" [value]="x">{{x}}</option>
+          </select>
+        </div>
 
     <div [formGroup]="rForm" class="form-group">
       <label for="onlineTestScore">Online Test Score</label>
@@ -57,6 +60,28 @@
       <label for="firstLevelFeedback">First Level Feedback</label>
       <input type="text" class="form-control" id="firstLevelFeedback" required [(ngModel)]="candidate.interview.firstLevelFeedback" name="firstLevelFeedback" formControlName="firstLevelFeedback">
     </div>
+
+    <div [formGroup]="rForm" class="form-group">
+        <label for="secondLevelName">Second Level Taken By</label>
+        <input type="text" class="form-control" id="secondLevelName" required [(ngModel)]="candidate.interview.secondLevelName" name="secondLevelName" formControlName="secondLevelName">
+      </div>
+  
+      <div [formGroup]="rForm" class="form-group">
+        <label for="secondLevelFeedback">Second Level Feedback</label>
+        <input type="text" class="form-control" id="secondLevelFeedback" required [(ngModel)]="candidate.interview.secondLevelFeedback" name="secondLevelFeedback" formControlName="secondLevelFeedback">
+      </div>
+
+      <div [formGroup]="rForm" class="form-group">
+          <label for="thirdLevelName">Third Level Taken By</label>
+          <input type="text" class="form-control" id="thirdLevelName" required [(ngModel)]="candidate.interview.thirdLevelName" name="thirdLevelName" formControlName="thirdLevelName">
+        </div>
+      
+
+
+      <div [formGroup]="rForm" class="form-group">
+          <label for="thirdLevelFeedback">Third Level Feedback</label>
+          <input type="text" class="form-control" id="thirdLevelFeedback" required [(ngModel)]="candidate.interview.thirdLevelFeedback" name="thirdLevelFeedback" formControlName="thirdLevelFeedback">
+        </div>
 
     <div [formGroup]="rForm" class="form-group">
       <label for="dateOfOffer">Date Of Offer</label>

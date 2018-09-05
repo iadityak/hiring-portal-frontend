@@ -52,14 +52,23 @@
           </select>
       </div>
             
-     <div [formGroup]="rForm" class="form-group">
+     <!-- <div [formGroup]="rForm" class="form-group">
         <label for="requirementID">Position Applied <font color="red">*</font></label>   
         <select id="requirementID" class="form-control" required [(ngModel)]="candidate.requirementID" name="requirementID" formControlName="requirementID">
         <option value="123">Senior Software Engineer</option>
         <option value="234">Software Engineer</option>
         <option value="567">Associate Software Engineer</option>
         </select>
-      </div>
+      </div> -->
+
+      <div [formGroup]="rForm" class="form-group">
+          <label for="requirementID">Requirement ID <font color="red">*</font></label>   
+          <select id="requirementID" class="form-control" required [(ngModel)]="candidate.requirementID" name="requirementID" formControlName="requirementID">
+          <option *ngFor="let x of requirement" [value]="x">{{x}}</option>
+          </select>
+        </div>
+
+      
 
       <div class="btn-group" >
           <button class="btn btn-primary" (click)="goBack()">Back</button>

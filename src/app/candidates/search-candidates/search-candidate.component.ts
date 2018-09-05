@@ -21,6 +21,8 @@ export class SearchCandidateComponent implements OnInit {
   username: string= '';
   email: string = '';
   status: string='';
+  start: string='';
+  end: string='';
   show: boolean = false;
   error: boolean=false;
 
@@ -59,7 +61,7 @@ export class SearchCandidateComponent implements OnInit {
   private search():void {
     console.log("Calling API --");
     this.error=false;
-    this.candidatesService.candidateSearch(this.username,this.email,this.status).then
+    this.candidatesService.candidateSearch(this.username,this.email,this.status,this.start,this.end).then
      (
 
       response => this.candidateList = response
