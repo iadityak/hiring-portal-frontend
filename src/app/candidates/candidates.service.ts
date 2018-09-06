@@ -20,21 +20,23 @@ export class CandidatesService {
 
 
   constructor(private http: Http, private router: Router, private location: Location) { }
-
-  private candidatesUrl = 'http://localhost:8081/addDetails';
+  
+  private candidatesUrl = 'http://localhost:8081';
   private headers = new Headers({'Content-Type': 'application/json'});
   private options = new RequestOptions();
   candidateUp = new Candidate();
 
   getCandidates(): Promise<Candidate[]> {
-    return this.http.get('http://localhost:8081/allCandidate')
+    const url=`${this.candidatesUrl}/allCandidate`;
+    console.log(url);
+    return this.http.get(url)
     .toPromise()
     .then(response => response.json() as Candidate[]);
     
   }
 
   getCandidatebyPan(candidate_id : String): Promise<Array<Candidate>>{
-     const url = `http://localhost:8081/candidateDetailbyPan?panCard=${candidate_id}`;
+     const url = `${this.candidatesUrl}/candidateDetailbyPan?panCard=${candidate_id}`;
     return this.http.get(url)
     .toPromise()
     .then(response => response.json() as Array<Candidate>)
@@ -43,7 +45,7 @@ export class CandidatesService {
   }
 
   candidateSearch(candidate_id : String, email : String, status: String, start: String,end:String): Promise<Array<Candidate>>{
-    const url = `http://localhost:8081/candidateSearch?panCard=${candidate_id}&emailID=${email}&status=${status}&start=${start}&end=${end}`;
+    const url = `${this.candidatesUrl}/candidateSearch?panCard=${candidate_id}&emailID=${email}&status=${status}&start=${start}&end=${end}`;
     return this.http.get(url)
     .toPromise()
     .then(response => response.json() as Array<Candidate>)
@@ -58,7 +60,7 @@ export class CandidatesService {
   update(candidate: Candidate): Promise<Number>{
 
 
-    const url =`http://localhost:8081/editDetails`;
+    const url =`${this.candidatesUrl}/editDetails`;
     return this.http.post(url, JSON.stringify(candidate), {headers: this.headers})
     .toPromise()
     .then(response => response.status as Number)
@@ -78,8 +80,9 @@ export class CandidatesService {
 
 
   create(candidate: Candidate): Promise<Number> {
+    const url =`${this.candidatesUrl}/addDetails`
     return this.http
-    .post('http://localhost:8081/addDetails', JSON.stringify(candidate), {headers: this.headers})
+    .post(url, JSON.stringify(candidate), {headers: this.headers})
     .toPromise()
     .then(response => response.status as Number)
     .catch(this.handleError);
@@ -93,7 +96,8 @@ export class CandidatesService {
  reqIDs: String[] = [''];
 
  getRequirementID(): Promise<String[]>  {
-    return this.http.get('http://localhost:8081/requirementID')
+   const url=`${this.candidatesUrl}/requirementID`
+    return this.http.get(url)
    .toPromise()
    .then(response => response.json() as String[]);
   }

@@ -88,6 +88,16 @@
       <input type="date" class="form-control" id="dateOfOffer" required [(ngModel)]="candidate.interview.dateOfOffer" name="dateOfOffer" formControlName="dateOfOffer">
     </div>
 
+    <div [formGroup]="rForm" class="form-group">
+        <label for="joiningDate">Joining Date</label>
+        <input type="date" class="form-control" id="joiningDate" required [(ngModel)]="candidate.interview.joiningDate" name="joiningDate" formControlName="joiningDate">
+      </div>
+
+      <div [formGroup]="rForm" class="form-group">
+          <label for="revisedJoiningDate">Revised Joining Date</label>
+          <input type="date" class="form-control" id="revisedJoiningDate" required [(ngModel)]="candidate.interview.revisedJoiningDate" name="revisedJoiningDate" formControlName="revisedJoiningDate">
+        </div>
+
       <!-- <h2>{{candidate.interview.onlineTestScore}}</h2> -->
 
       <div class="btn-group">

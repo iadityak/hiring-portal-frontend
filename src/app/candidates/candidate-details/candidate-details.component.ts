@@ -41,6 +41,8 @@ export class CandidateDetailsComponent implements OnInit {
       'thirdLevelName' : new FormControl(''),
       'thirdLevelFeedback' : new FormControl(''),
       'dateOfOffer' : new FormControl(''),
+      'joiningDate' : new FormControl(''),
+      'revisedJoiningDate' : new FormControl(''),
 
       
 
