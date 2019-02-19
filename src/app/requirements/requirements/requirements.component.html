@@ -1,0 +1,76 @@
+
+<div style="display:inline-block">
+<h2 id="h" style="float: left">Requirement List</h2>
+
+  <button style="float: right" [routerLink]="['/requirement/Add']" class="btn btn-info btn-add" ><strong>Add New Requirement</strong></button>
+</div>
+
+<div class="table-responsive">
+
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers">{{header}}</th>
+      </tr>
+
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let requirement of requirements | paginate: { itemsPerPage: 7, currentPage: page }">
+
+        <td>{{requirement.id}}</td>
+        <td>{{requirement.name}}</td>
+        <td>{{requirement.vacancy}}</td>
+        <td>{{requirement.jobLocation}}</td>
+        <td>{{requirement.minExp}}</td>
+        <td>{{requirement.status}}</td>
+
+        <td>
+          <button class="btn btn-info btn-xs" (click)="open(requirement)">Details</button>
+        </td>
+        
+        <td>
+            <div>
+            <button [routerLink]="['/requirement/view', requirement.id]" class="btn btn-danger btn-xs" ng-model="button" [disabled]="requirement.status == 'Close'">Close</button>
+            </div>
+
+            
+
+        </td>
+        
+
+
+        
+<!--     
+
+        <td>
+          <button [routerLink]="['/requirement/view', requirement.id]" class="btn btn-info btn-xs">Details</button>
+        </td>
+
+
+
+
+
+
+        <td>
+          <button [routerLink]="['/candidates/detail', candidate.candidate_id]" class="btn btn-info" btn-xs>Edit</button>
+        </td>
+
+        
+        <td>
+          <button (click)="delete(candidate.id)" class="btn btn-danger" btn-xs>X</button> 
+        </td> -->
+
+
+
+      </tr>
+    </tbody>
+
+    <div class="has-text-centered">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+    
+  </table>
+  
+</div>

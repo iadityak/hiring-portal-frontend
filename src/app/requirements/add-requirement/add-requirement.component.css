@@ -1,0 +1,16 @@
+    h2{
+    font-size: 3em;
+    }
+  
+    small{
+      color: red;
+    }
+  
+    #h{
+      padding: 20px;
+      margin-top: 100;
+      text-decoration-color: blue;
+      margin: 50px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+    
+    }

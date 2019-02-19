@@ -2,16 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
   <title>Idemia Hire</title>
   <base href="/">
-
+  <script src="https://app.engati.com/static/js/chat_widget.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
   <app-root></app-root>
-  <script src="lib/jquery/dist/jquery.min.js"></script>
-<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+   
+    <script>EngtChat.init({"bot_key": "a0fae0cb45404564 ", "e":"p", "bot_name":"Chatbot","welcome_msg":true, "branding_key":"default" });</script>
+
+
 </body>
 </html>

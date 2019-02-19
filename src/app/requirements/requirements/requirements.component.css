@@ -1,0 +1,29 @@
+.table-responsive {
+    font-size: 0.8rem;
+    width: 95vw;
+    background: rgba(67, 0, 153, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  #h{
+     padding: 20px;
+    margin-top: 50;
+    text-decoration-color: blue;
+    margin: 70;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+  
+  }
+
+  .btn-xs {
+    margin-top: -5px;
+    padding: 0px 0px;
+    font-size: 13px;
+    border-radius: 10px;
+    width:100%;    
+}
+
+  .btn-add {
+    margin-top: 15px;
+    margin-left: 820px;
+  }

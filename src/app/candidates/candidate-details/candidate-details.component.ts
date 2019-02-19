@@ -19,7 +19,7 @@ export class CandidateDetailsComponent implements OnInit {
   candidate = new Candidate();
   submitted = false;
   statuscode: Number;
-  requirement : String[];
+  requirement: String[];
   show: boolean;
   constructor(private candidatesService: CandidatesService,
     private route: ActivatedRoute,
@@ -32,30 +32,30 @@ export class CandidateDetailsComponent implements OnInit {
       'lastName': new FormControl(''),
       'mobileNumber': new FormControl(''),
       'status': new FormControl(''),
-      'requirementID' : new FormControl(''),
-      'onlineTestScore' : new FormControl(''),
-      'firstLevelName' : new FormControl(''),
-      'firstLevelFeedback' : new FormControl(''),
-      'secondLevelName' : new FormControl(''),
-      'secondLevelFeedback' : new FormControl(''),
-      'thirdLevelName' : new FormControl(''),
-      'thirdLevelFeedback' : new FormControl(''),
-      'dateOfOffer' : new FormControl(''),
-      'joiningDate' : new FormControl(''),
-      'revisedJoiningDate' : new FormControl(''),
+      'requirementID': new FormControl(''),
+      'onlineTestScore': new FormControl(''),
+      'firstLevelName': new FormControl(''),
+      'firstLevelFeedback': new FormControl(''),
+      'secondLevelName': new FormControl(''),
+      'secondLevelFeedback': new FormControl(''),
+      'thirdLevelName': new FormControl(''),
+      'thirdLevelFeedback': new FormControl(''),
+      'dateOfOffer': new FormControl(''),
+      'joiningDate': new FormControl(''),
+      'revisedJoiningDate': new FormControl(''),
 
-      
 
-   })
 
-   //this.candidateList = new Array<Candidate>();
+    })
 
-     }
+    //this.candidateList = new Array<Candidate>();
+
+  }
 
   ngOnInit() {
     this.route.params
-    .switchMap((params: Params) => this.candidatesService.getCandidatebyPan(params['candidate_id']))
-    .subscribe(response => this.candidate = response[0]);
+      .switchMap((params: Params) => this.candidatesService.getCandidatebyPan(params['candidate_id']))
+      .subscribe(response => this.candidate = response[0]);
     this.candidatesService.getRequirementID().then(response => this.requirement = response);
   }
 
@@ -63,21 +63,19 @@ export class CandidateDetailsComponent implements OnInit {
 
 
   onSubmit(): void {
-     this.submitted = true;
-    this.candidatesService.update(this.candidate).then(response => this.statuscode= response).then(() =>this.toggle()).then(() => this.goBack());
+    this.submitted = true;
+    this.candidatesService.update(this.candidate).then(response => this.statuscode = response).then(() => this.toggle()).then(() => this.goBack());
 
   }
 
-  toggle(){
+  toggle() {
     console.log(this.statuscode);
-    if(this.statuscode==200)
-    {
-      this.show=true;
+    if (this.statuscode == 200) {
+      this.show = true;
       alert(this.candidate.firstName + ' updated successfully!');
     }
-    else
-    {
-      this.show=false;
+    else {
+      this.show = false;
       alert("Failed to update candidate. Please Try Again!");
     }
   }

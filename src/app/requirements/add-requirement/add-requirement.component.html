@@ -1,0 +1,76 @@
+<h2 id="h">Add New Requirement</h2>
+
+<div class="col-sm-offset-2 col-sm-10">
+  <p>{{postResultMessage}}</p>
+</div>
+
+<form (ngSubmit)="onSubmit(rForm.value,$event)">
+
+  <div [formGroup]="rForm" class="form-group">
+    <label for="id">Requirement Id<font color="red">*</font></label>
+    <input type="text" class="form-control" id="id" required [(ngModel)]="requirement.id" name="id" formControlName="id">
+    <small *ngIf="!rForm.controls['id'].valid && rForm.controls['id'].touched">Requirement Id is required</small>
+  </div>
+
+  <div [formGroup]="rForm" class="form-group">
+    <label for="name">Position Name<font color="red">*</font></label>
+    <input type="text" class="form-control" id="name" required [(ngModel)]="requirement.name" name="name" formControlName="name">
+    <small *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">Position Name is required</small>
+  </div>
+
+
+  <div [formGroup]="rForm" class="form-group">
+    <label for="domain">Domain<font color="red">*</font></label>
+    <input type="text" class="form-control" id="domain" required [(ngModel)]="requirement.domain" name="domain"
+      formControlName="domain">
+    <small *ngIf="!rForm.controls['domain'].valid && rForm.controls['domain'].touched">Domain is required</small>
+  </div>
+
+  <div [formGroup]="rForm" class="form-group">
+    <label for="subDomain">Sub-Domain<font color="red">*</font></label>
+    <input type="text" class="form-control" id="subDomain" required [(ngModel)]="requirement.subDomain" name="subDomain"
+      formControlName="subDomain">
+    <small *ngIf="!rForm.controls['subDomain'].valid && rForm.controls['subDomain'].touched">Sub-Domain is required</small>
+  </div>
+  <div></div>
+
+
+
+  <div [formGroup]="rForm" class="form-group">
+    <label for="reportingManager">Requirement Creator<font color="red">*</font></label>
+    <input type="text" class="form-control" id="reportingManager" required [(ngModel)]="requirement.reportingManager" name="reportingManager"
+      formControlName="reportingManager">
+    <small *ngIf="!rForm.controls['reportingManager'].valid && rForm.controls['reportingManager'].touched">Reporting Manageris required</small>
+  </div>
+
+      <div [formGroup]="rForm" class="form-group">
+        <label for="vacancy">Vacancy<font color="red">*</font></label>
+        <input type="number" class="form-control" id="vacancy" required [(ngModel)]="requirement.vacancy" name="vacancy"
+          formControlName="vacancy">
+        <small *ngIf="!rForm.controls['vacancy'].valid && rForm.controls['vacancy'].touched">Vacancy is required</small>
+      </div>
+
+      <div [formGroup]="rForm" class="form-group">
+        <label for="jobLocation">Job Location<font color="red">*</font></label>
+        <input type="text" class="form-control" id="jobLocation" required [(ngModel)]="requirement.jobLocation" name="jobLocation"
+          formControlName="jobLocation">
+        <small *ngIf="!rForm.controls['jobLocation'].valid && rForm.controls['jobLocation'].touched">10 digit Mobile Number
+          is required</small>
+      </div>
+
+      <div [formGroup]="rForm" class="form-group">
+        <label for="minExp">Minimum Experience Required (in years)<font color="red">*</font></label>
+        <input type="number" class="form-control" id="minExp" required [(ngModel)]="requirement.minExp" name="minExp"
+          formControlName="minExp">
+        <small *ngIf="!rForm.controls['minExp'].valid && rForm.controls['minExp'].touched">10 digit Mobile Number
+          is required</small>
+      </div>
+
+
+  <div class="btn-group">
+   
+    <button class="btn btn-primary" (click)="goBack()">Back</button>
+    <button type="submit" (click)="onSubmit($event)" class="btn btn-success" [disabled]="!rForm.valid">Submit</button>
+ 
+  </div>
+</form>

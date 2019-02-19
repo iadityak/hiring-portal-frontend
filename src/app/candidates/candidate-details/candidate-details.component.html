@@ -4,99 +4,117 @@
     <form (ngSubmit)="onSubmit(rForm.value)">
       <div [formGroup]="rForm" class="form-group">
         <label for="candidate_id">PanCard</label>
-        <input type="text" class="form-control" id="candidate_id" required [(ngModel)]="candidate.candidate_id" name="candidate_id" formControlName="candidate_id" disabled>
-        <small *ngIf="!rForm.controls['candidate_id'].valid && rForm.controls['candidate_id'].touched">Pan Card Number is required</small>
+        <input type="text" class="form-control" id="candidate_id" required [(ngModel)]="candidate.candidate_id" name="candidate_id"
+          formControlName="candidate_id" disabled>
+        <small *ngIf="!rForm.controls['candidate_id'].valid && rForm.controls['candidate_id'].touched">Pan Card Number is
+          required</small>
       </div>
       <div [formGroup]="rForm" class="form-group">
         <label for="candidateEmailID">Email ID</label>
-        <input type="text" class="form-control" id="candidateEmailID" required [(ngModel)]="candidate.candidateEmailID" name="candidateEmailID" formControlName="candidateEmailID" disabled>
-        <small *ngIf="!rForm.controls['candidateEmailID'].valid && rForm.controls['candidateEmailID'].touched">Incorrect email format</small>
+        <input type="text" class="form-control" id="candidateEmailID" required [(ngModel)]="candidate.candidateEmailID" name="candidateEmailID"
+          formControlName="candidateEmailID" disabled>
+        <small *ngIf="!rForm.controls['candidateEmailID'].valid && rForm.controls['candidateEmailID'].touched">Incorrect
+          email format</small>
       </div>
-      <div  [formGroup]="rForm" class="form-group">
+      <div [formGroup]="rForm" class="form-group">
         <label for="firstName">First Name</label>
-        <input type="text" class="form-control" id="firstName"  required [(ngModel)]="candidate.firstName" name="firstName" formControlName="firstName" disabled >
+        <input type="text" class="form-control" id="firstName" required [(ngModel)]="candidate.firstName" name="firstName" formControlName="firstName"
+          disabled>
         <small *ngIf="!rForm.controls['firstName'].valid && rForm.controls['firstName'].touched">First Name is required</small>
       </div>
       <div [formGroup]="rForm" class="form-group">
         <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" id="lastName" required [(ngModel)]="candidate.lastName" name="lastName" formControlName="lastName" disabled>
-          <small *ngIf="!rForm.controls['lastName'].valid && rForm.controls['lastName'].touched">Last Name is required</small>
+        <input type="text" class="form-control" id="lastName" required [(ngModel)]="candidate.lastName" name="lastName" formControlName="lastName"
+          disabled>
+        <small *ngIf="!rForm.controls['lastName'].valid && rForm.controls['lastName'].touched">Last Name is required</small>
       </div>
 
       <div [formGroup]="rForm" class="form-group">
         <label for="mobileNumber">Mobile Number</label>
-        <input type="text" class="form-control" id="mobileNumber" required [(ngModel)]="candidate.mobileNumber" name="mobileNumber" formControlName="mobileNumber">
-        <small *ngIf="!rForm.controls['mobileNumber'].valid && rForm.controls['mobileNumber'].touched">10 digit Mobile Number is required</small>
+        <input type="text" class="form-control" id="mobileNumber" required [(ngModel)]="candidate.mobileNumber" name="mobileNumber"
+          formControlName="mobileNumber">
+        <small *ngIf="!rForm.controls['mobileNumber'].valid && rForm.controls['mobileNumber'].touched">10 digit Mobile Number
+          is required</small>
       </div>
 
       <div [formGroup]="rForm" class="form-group">
-          <label for="status">Status </label>
-          <select id="status" class="form-control" required [(ngModel)]="candidate.status" name="status" formControlName="status">
-            <option value="Selected">Selected</option>
-            <option value="Profile Created"> Profile Created</option>
-            <option value="Interview Process">Interview Process</option>
-            <option value="Rejected">Rejected</option>
-          </select>
+        <label for="status">Status </label>
+        <select id="status" class="form-control" required [(ngModel)]="candidate.status" name="status" formControlName="status">
+          <option value="Selected">Selected</option>
+          <option value="Profile Created"> Profile Created</option>
+          <option value="Interview Process">Interview Process</option>
+          <option value="Rejected">Rejected</option>
+        </select>
       </div>
-          
+
       <div [formGroup]="rForm" class="form-group">
-          <label for="requirementID">Requirement ID </label>   
-          <select id="requirementID" class="form-control" required [(ngModel)]="candidate.requirementID" name="requirementID" formControlName="requirementID">
+        <label for="requirementID">Requirement ID </label>
+        <select id="requirementID" class="form-control" required [(ngModel)]="candidate.requirementID" name="requirementID" formControlName="requirementID">
           <option *ngFor="let x of requirement" [value]="x">{{x}}</option>
-          </select>
-        </div>
-
-    <div [formGroup]="rForm" class="form-group">
-      <label for="onlineTestScore">Online Test Score</label>
-      <input type="text" class="form-control" id="status" required [(ngModel)]="candidate.interview.onlineTestScore" name="onlineTestScore" formControlName="onlineTestScore">
-    </div>
-
-    <div [formGroup]="rForm" class="form-group">
-      <label for="firstLevelName">First Level Taken By</label>
-      <input type="text" class="form-control" id="firstLevelName" required [(ngModel)]="candidate.interview.firstLevelName" name="firstLevelName" formControlName="firstLevelName">
-    </div>
-
-    <div [formGroup]="rForm" class="form-group">
-      <label for="firstLevelFeedback">First Level Feedback</label>
-      <input type="text" class="form-control" id="firstLevelFeedback" required [(ngModel)]="candidate.interview.firstLevelFeedback" name="firstLevelFeedback" formControlName="firstLevelFeedback">
-    </div>
-
-    <div [formGroup]="rForm" class="form-group">
-        <label for="secondLevelName">Second Level Taken By</label>
-        <input type="text" class="form-control" id="secondLevelName" required [(ngModel)]="candidate.interview.secondLevelName" name="secondLevelName" formControlName="secondLevelName">
+        </select>
       </div>
-  
+
+      <div [formGroup]="rForm" class="form-group">
+        <label for="onlineTestScore">Online Test Score</label>
+        <input type="text" class="form-control" id="status" required [(ngModel)]="candidate.interview.onlineTestScore" name="onlineTestScore"
+          formControlName="onlineTestScore">
+      </div>
+
+      <div [formGroup]="rForm" class="form-group">
+        <label for="firstLevelName">First Level Taken By</label>
+        <input type="text" class="form-control" id="firstLevelName" required [(ngModel)]="candidate.interview.firstLevelName" name="firstLevelName"
+          formControlName="firstLevelName">
+      </div>
+
+      <div [formGroup]="rForm" class="form-group">
+        <label for="firstLevelFeedback">First Level Feedback</label>
+        <input type="text" class="form-control" id="firstLevelFeedback" required [(ngModel)]="candidate.interview.firstLevelFeedback"
+          name="firstLevelFeedback" formControlName="firstLevelFeedback">
+      </div>
+
+      <div [formGroup]="rForm" class="form-group">
+        <label for="secondLevelName">Second Level Taken By</label>
+        <input type="text" class="form-control" id="secondLevelName" required [(ngModel)]="candidate.interview.secondLevelName" name="secondLevelName"
+          formControlName="secondLevelName">
+      </div>
+
       <div [formGroup]="rForm" class="form-group">
         <label for="secondLevelFeedback">Second Level Feedback</label>
-        <input type="text" class="form-control" id="secondLevelFeedback" required [(ngModel)]="candidate.interview.secondLevelFeedback" name="secondLevelFeedback" formControlName="secondLevelFeedback">
+        <input type="text" class="form-control" id="secondLevelFeedback" required [(ngModel)]="candidate.interview.secondLevelFeedback"
+          name="secondLevelFeedback" formControlName="secondLevelFeedback">
       </div>
 
       <div [formGroup]="rForm" class="form-group">
-          <label for="thirdLevelName">Third Level Taken By</label>
-          <input type="text" class="form-control" id="thirdLevelName" required [(ngModel)]="candidate.interview.thirdLevelName" name="thirdLevelName" formControlName="thirdLevelName">
-        </div>
-      
+        <label for="thirdLevelName">Third Level Taken By</label>
+        <input type="text" class="form-control" id="thirdLevelName" required [(ngModel)]="candidate.interview.thirdLevelName" name="thirdLevelName"
+          formControlName="thirdLevelName">
+      </div>
+
 
 
       <div [formGroup]="rForm" class="form-group">
-          <label for="thirdLevelFeedback">Third Level Feedback</label>
-          <input type="text" class="form-control" id="thirdLevelFeedback" required [(ngModel)]="candidate.interview.thirdLevelFeedback" name="thirdLevelFeedback" formControlName="thirdLevelFeedback">
-        </div>
+        <label for="thirdLevelFeedback">Third Level Feedback</label>
+        <input type="text" class="form-control" id="thirdLevelFeedback" required [(ngModel)]="candidate.interview.thirdLevelFeedback"
+          name="thirdLevelFeedback" formControlName="thirdLevelFeedback">
+      </div>
 
-    <div [formGroup]="rForm" class="form-group">
-      <label for="dateOfOffer">Date Of Offer</label>
-      <input type="date" class="form-control" id="dateOfOffer" required [(ngModel)]="candidate.interview.dateOfOffer" name="dateOfOffer" formControlName="dateOfOffer">
-    </div>
+      <div [formGroup]="rForm" class="form-group">
+        <label for="dateOfOffer">Date Of Offer</label>
+        <input type="date" class="form-control" id="dateOfOffer" required [(ngModel)]="candidate.interview.dateOfOffer" name="dateOfOffer"
+          formControlName="dateOfOffer">
+      </div>
 
-    <div [formGroup]="rForm" class="form-group">
+      <div [formGroup]="rForm" class="form-group">
         <label for="joiningDate">Joining Date</label>
-        <input type="date" class="form-control" id="joiningDate" required [(ngModel)]="candidate.interview.joiningDate" name="joiningDate" formControlName="joiningDate">
+        <input type="date" class="form-control" id="joiningDate" required [(ngModel)]="candidate.interview.joiningDate" name="joiningDate"
+          formControlName="joiningDate">
       </div>
 
       <div [formGroup]="rForm" class="form-group">
-          <label for="revisedJoiningDate">Revised Joining Date</label>
-          <input type="date" class="form-control" id="revisedJoiningDate" required [(ngModel)]="candidate.interview.revisedJoiningDate" name="revisedJoiningDate" formControlName="revisedJoiningDate">
-        </div>
+        <label for="revisedJoiningDate">Revised Joining Date</label>
+        <input type="date" class="form-control" id="revisedJoiningDate" required [(ngModel)]="candidate.interview.revisedJoiningDate"
+          name="revisedJoiningDate" formControlName="revisedJoiningDate">
+      </div>
 
       <!-- <h2>{{candidate.interview.onlineTestScore}}</h2> -->
 

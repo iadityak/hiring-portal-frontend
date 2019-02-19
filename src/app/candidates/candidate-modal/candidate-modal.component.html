@@ -1,67 +1,136 @@
 <div class="container">
-    <div id="print-section">
-  <h2 id="h"> {{candidate.firstName}} {{candidate.lastName}}'s details</h2>
-  
-  <div>
-  <table style="width:100%" class="table table-hover table-responsive">
-      <tr>
-        <td>Name</td>
-        <td>{{candidate.firstName}} {{candidate.lastName}}</td> 
-      </tr>
-      <tr>
-        <td>Email</td>
-        <td>{{candidate.candidateEmailID}}</td> 
-      </tr>
-      <tr>
-         <td>Mobile Number </td>
-         <td>{{candidate.mobileNumber}}</td> 
-      </tr>
-      <tr>
+  <div class="col-md-1-6" style="width: 500px; float:left; height:100px; margin:5px">
+  <div id="print-section">
+    <h2 id="h"align="center"> {{candidate.firstName}} {{candidate.lastName}}'s details</h2>
+
+    <div>
+      <table style="width:100%" class="table table-hover table-responsive">
+        <tr>
+          <td>Name</td>
+          <td>{{candidate.firstName}} {{candidate.lastName}}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>{{candidate.candidateEmailID}}</td>
+        </tr>
+        <tr>
+          <td>Mobile Number </td>
+          <td>{{candidate.mobileNumber}}</td>
+        </tr>
+        <tr>
           <td>Pan Card</td>
-          <td>{{candidate.candidate_id}}</td> 
+          <td>{{candidate.candidate_id}}</td>
         </tr>
         <tr>
           <td>Current Status</td>
-          <td>{{candidate.status}}</td> 
+          <td>{{candidate.status}}</td>
         </tr>
         <tr>
-           <td>Online Test Score </td>
-           <td>{{candidate.interview.onlineTestScore}}</td> 
+          <td>Online Test Score </td>
+          <td>{{candidate.interview.onlineTestScore}}</td>
+        </tr>
+        <tr *ngIf=first>
+          <td>First Level : </td>
+          <td>{{candidate.interview.firstLevelFeedback}}</td>
+        </tr>
+        <tr *ngIf=second>
+          <td>Second Level : </td>
+          <td>{{candidate.interview.secondLevelFeedback}}</td>
+        </tr>
+        <tr *ngIf=third>
+          <td>Third Level : </td>
+          <td>{{candidate.interview.thirdLevelFeedback}}</td>
         </tr>
         <tr>
-            <td>First Level : </td>
-            <td>{{candidate.interview.firstLevelFeedback}}</td> 
-         </tr>
-         <tr>
-            <td>Second Level : </td>
-            <td>{{candidate.interview.secondLevelFeedback}}</td> 
-         </tr>
-         <tr>
-            <td>Third Level : </td>
-            <td>{{candidate.interview.thirdLevelFeedback}}</td> 
-         </tr>
-         <tr>
-            <td>Date of Offer : </td>
-            <td>{{candidate.interview.dateOfOffer}}</td> 
-         </tr>
-         <tr>
-            <td>Joining Date : </td>
-            <td>{{candidate.interview.joiningDate}}</td> 
-         </tr>
-         <tr>
-            <td>Revised Joining Date: </td>
-            <td>{{candidate.interview.revisedJoiningDate}}</td> 
-         </tr>
+          <td>Date of Offer : </td>
+          <td>{{candidate.interview.dateOfOffer}}</td>
+        </tr>
+        <tr>
+          <td>Joining Date : </td>
+          <td>{{candidate.interview.joiningDate}}</td>
+        </tr>
+        <tr>
+          <td>Revised Joining Date: </td>
+          <td>{{candidate.interview.revisedJoiningDate}}</td>
+        </tr>
 
-    </table>
+      </table>
 
 
+    </div>
   </div>
-</div>
 
-  <div class="btn-group" >
+  <div class="btn-group">
     <button class="btn btn-success" (click)="print()">print</button>
     <button class="btn btn-primary" (click)="goBack()">Back</button>
   </div>
+  </div>
+  <div class="col-md-7-12" style="width: 500px; float:left; height:100px; margin:50px">
+    <h2 *ngIf=roundCheck id="h1" align="center"> Round {{rNum}} Feedback</h2>
+    <div *ngIf=isSelected>
+      <h2 id="h1" align="center"> Selected</h2>
+    </div>
+    <div *ngIf=isRejected>
+      <h2 id="h1" align="center"> Rejected</h2>
+    </div>
+    
+    <div *ngIf=isValid>
+            <form [formGroup]="myform" >
+          <h3></h3>
+          <div class="form-group">
+              <label for="interviewerName">Interviewer Name</label>
+              <input type="text" class="form-control" formControlName="interviewerName" [(ngModel)]="interviewerName" name="interviewerName">
+          </div>
+          <div class="form-group">
+            <label>Technical Skills</label>
+            <select class="form-control" formControlName="technicalSkill" [(ngModel)]="technicalSkill" name="technicalSkill">
+              <option value="">Rate out of 10</option>
+              <option *ngFor="let lang of langs" [value]="lang">{{lang}}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+              <label>Communication Skills</label>
+              <select class="form-control" formControlName="commSkill" [(ngModel)]="commSkill" name="commSkill">
+                <option value="">Rate out of 10</option>
+                <option *ngFor="let lang of langs" [value]="lang">{{lang}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label>Confidence Level</label>
+                <select class="form-control" formControlName="confLevel" [(ngModel)]="confLevel" name="confLevel">
+                  <option value="">Rate out of 10</option>
+                  <option *ngFor="let lang of langs" [value]="lang">{{lang}}
+                  </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Other Skills</label>
+                <select class="form-control" formControlName="otherSkill" [(ngModel)]="otherSkill" name="otherSkill">
+                  <option value="">Rate out of 10</option>
+                  <option *ngFor="let lang of langs" [value]="lang">{{lang}}
+                  </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Other Attribute</label>
+                <select class="form-control" formControlName="otherAttr" [(ngModel)]="otherAttr" name="otherAttr">
+                  <option value="">Rate out of 10</option>
+                  <option *ngFor="let lang of langs" [value]="lang">{{lang}}
+                  </option>
+                </select>
+            </div>
+            <div class="btn-group">
+               
+                
+                <button  class="btn btn-success" (click)="select()">Finally Selected</button>
+                <button  class="btn btn-warning" (click)= "submit()">Submit</button>
+                <button  class="btn btn-danger" (click)="reject()">Finally Rejected</button>
+            </div>
+          <pre>{{myform.value | json}}</pre>
+        </form>
+      </div>
 
+  </div>
 </div>

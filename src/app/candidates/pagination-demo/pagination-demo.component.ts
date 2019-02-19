@@ -1,22 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CandidatesService } from '../candidates.service';
 import { Candidate } from '../candidate';
-import { trigger, transition, group, query, style, animate } from '@angular/animations';
 
 @Component({
-  selector: 'app-candidates',
-  templateUrl: './candidates.component.html',
-  styleUrls: ['./candidates.component.css']
-
+  selector: 'app-pagination-demo',
+  templateUrl: './pagination-demo.component.html',
+  styleUrls: ['./pagination-demo.component.css']
 })
-
-export class CandidatesComponent implements OnInit {
+export class PaginationDemoComponent implements OnInit {
 
   page: number = 1;
 
   headers = ['PAN Number', 'Email', 'Name', 'Mobile', 'Status', 'RequirementID', 'Details', 'Edit',];
   candidates: Candidate[];
-  topics = ['Accept','Reject'];
 
 
   constructor(private candidatesService: CandidatesService) { }

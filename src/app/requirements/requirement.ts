@@ -1,9 +1,8 @@
 export class Requirement {
-    public id: String;
 
-    public requirementID : String;
+    public id: String;
     
-	public type : String;
+	public name: String;
 	
     public domain: String;
     
@@ -11,7 +10,12 @@ export class Requirement {
 	
 	public reportingManager: String ;
 	
-	public status: String;
+    public status: String;
     
+    public vacancy: Number;
+
+    public jobLocation: String;
+
+    public minExp: Number;
   }
   

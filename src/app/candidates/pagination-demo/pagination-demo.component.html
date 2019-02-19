@@ -1,8 +1,7 @@
 <h2 id="h">All Candidates</h2>
 
 <div class="table-responsive">
-
-
+  <button class="btn btn-primary" routerLink="/candidate/Add">Add candidate</button>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -12,7 +11,7 @@
     </thead>
     <tbody>
 
-      <tr *ngFor="let candidate of candidates | paginate: { itemsPerPage: 7, currentPage: page }">
+      <tr *ngFor="let candidate of candidates | paginate: { itemsPerPage: 5, currentPage: page }">
 
         <td>{{candidate.candidate_id}}</td>
         <td>{{candidate.candidateEmailID}}</td>
@@ -23,6 +22,7 @@
         <td>
           <button [routerLink]="['/candidates/view', candidate.candidate_id]" class="btn btn-info" btn-xs>Details</button>
         </td>
+
 
 
 
@@ -40,9 +40,8 @@
 
       </tr>
     </tbody>
-    <div class="has-text-centered">
-      <pagination-controls (pageChange)="page = $event"></pagination-controls>
-    </div>
   </table>
-  
+  <div class="has-text-centered">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
 </div>
