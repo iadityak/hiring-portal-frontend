@@ -1,10 +1,17 @@
 
-<h2 id="h">
+<h2 id="h" style="padding: 0px">
 
   Add new candidate to database</h2>
 
-<div class="col-sm-offset-2 col-sm-10">
-  <p>{{postResultMessage}}</p>
+<!--<div class="col-sm-offset-2 col-sm-10">-->
+  <!--<p>{{postResultMessage}}</p>-->
+<!--</div>-->
+
+<div class="text-center col-md-7 mx-auto" style="margin-top: -50px">
+  <h3>Upload your CV</h3>
+  <!--<h5></h5>-->
+  <input type="file" (change)="onFileChanged($event)">
+  <button class="btn btn-primary" (click)="onUpload()">Upload!</button>
 </div>
 <!-- <div>
   <ng-include src="https://app.engati.com/static/js/chat_widget.js"></ng-include>
@@ -79,7 +86,7 @@
 
   <div class="btn-group">
    
-    <button class="btn btn-primary" (click)="goBack()">Back</button>
+    <button class="btn btn-primary" style="margin-right: 5px" (click)="goBack()">Back</button>
     <button type="submit" (click)="onSubmit($event)" class="btn btn-success" [disabled]="!rForm.valid">Submit</button>
  
   </div>

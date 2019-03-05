@@ -1,6 +1,6 @@
 import { CandidatesService } from '../candidates.service';
 import { Candidate } from '../candidate';
-
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
@@ -23,13 +23,13 @@ export class AddCandidateComponent implements OnInit {
   rForm: FormGroup;
 
 
-  constructor(private candidatesService: CandidatesService,private location: Location,private fb: FormBuilder)
+  constructor(private candidatesService: CandidatesService,private location: Location,private fb: FormBuilder, private router: Router)
   {
     this.rForm = this.fb.group({
       candidate_id: ['', [Validators.required]],
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      mobileNumber: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
+      mobileNumber: ['', Validators.compose([Validators.required, Validators.minLength(10)])],
       candidateEmailID: ['', [Validators.required, Validators.email]],
       status: [''],
       requirementID: [''],
@@ -54,6 +54,7 @@ export class AddCandidateComponent implements OnInit {
     if (this.statuscode == 200) {
       this.show = true;
       alert(this.candidate.firstName + ' added successfully!');
+      this.router.navigateByUrl('/candidates/All');
     }
     else {
       this.show = false;
@@ -69,6 +70,49 @@ export class AddCandidateComponent implements OnInit {
 
   goBack(): void {
     this.location.isCurrentPathEqualTo;
+  }
+
+  selectedFile = null;
+  onFileChanged(event) {
+    console.log(event);
+    this.selectedFile = event.target.files[0]
+  }
+  message: String ='';
+  onUpload() {
+    // upload code goes here
+     let fd = new FormData();
+     fd.append('resume', this.selectedFile);
+     if(this.selectedFile){
+       console.log(this.selectedFile);
+       console.log("fd" + fd);
+       this.candidatesService.upload(fd)
+         .subscribe(Response => {
+           console.log(Response);
+           if (Response['status'] === 200)
+           {
+             const jsonResponse = JSON.parse(Response._body);
+             console.log(JSON.stringify(jsonResponse));
+             if(jsonResponse.data.basics.name.firstName) {
+               this.candidate.firstName = jsonResponse.data.basics.name.firstName;
+             }
+             if(jsonResponse.data.basics.name.lastName) {
+               this.candidate.lastName = jsonResponse.data.basics.name.lastName;
+             } else {
+               this.candidate.lastName = jsonResponse.data.basics.name.surname;
+             }
+
+             if(jsonResponse.data.basics.email) {
+               this.candidate.candidateEmailID = jsonResponse.data.basics.email[0];
+             }
+             if(jsonResponse.data.basics.phone) {
+               this.candidate.mobileNumber = jsonResponse.data.basics.phone[0];
+             }
+           }
+           else {
+             const errorMessage = Response['message'];
+           }
+         });
+     }
   }
 
 

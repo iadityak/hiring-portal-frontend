@@ -116,6 +116,20 @@ export class CandidatesService {
       .catch(this.handleError);
   }
 
+  // upload(resume: FormData): Promise<any> {
+  //   const url = 'http://localhost:8082/upload';
+  //   return this.http
+  //     .post(url, resume)
+  //     .toPromise()
+  //     .then(response => response as any)
+  //     .catch(this.handleError);
+  // }
+
+  upload(resume: FormData): Observable<any> {
+    const url = 'http://localhost:8080/upload';
+    return this.http.post(url, resume);
+  }
+
   private handleError(error: Response): Promise<any> {
     console.error('An error occurred', error);
     alert(error.json().errors[0] + ', try again.');
